@@ -84,27 +84,34 @@ Los días van en inglés y las horas en formato de 24 horas. Es la única parte 
 
 ---
 
-## Poner las reseñas de Google (pendiente)
+## Las reseñas de Google
 
-**La calificación ya está puesta y verificada contra la ficha real:** 5.0 de 5 con
-55 opiniones. Aparece en el badge de la sección "Lo que dicen los papás" y en el
-`aggregateRating` del JSON-LD.
+**Ya están puestas y verificadas contra la ficha real.** Calificación 5.0 de 5 con
+55 opiniones, y tres reseñas de padres de familia:
 
-Lo que falta son **los textos de las 3 reseñas**. Google no los muestra a nadie que
-no haya iniciado sesión, así que hay que copiarlos a mano. Se hace en dos minutos:
+| Quién | De cuándo |
+|---|---|
+| Maricarmen Polledo | hace 8 meses |
+| Cindy Girón | hace 8 meses |
+| Fernando Martínez | hace 8 meses |
 
-1. Abre la ficha con tu cuenta: https://www.google.com/maps?cid=17736346071055610791
-2. Entra a "Opiniones" y elige tres
-3. Copia el texto y el nombre de quien la escribió
+Son textuales de Google; solo se corrigieron faltas de ortografía y puntuación, sin
+cambiar ninguna palabra ni el sentido. Se eligieron tres que **no nombran a ningún
+doctor en particular**, porque en la ficha de Google conviven dos: el Dr. Agustín
+Vargas (ortodoncia) y el Dr. Pedro (odontopediatría). Así sirven aunque cambie quién
+atiende.
 
-En `index.html` busca `[Reseña — pendiente]` (hay 3) y reemplaza en cada tarjeta:
+### Si quieres cambiarlas
 
-- `[Reseña — pendiente]` → el texto de la reseña
-- `[Nombre — pendiente]` → el nombre de quien la escribió
+1. Abre la ficha: https://www.google.com/maps?cid=17736346071055610791
+2. Entra a "Opiniones" y elige otras
+3. En `index.html` busca el nombre actual (por ejemplo `Maricarmen Polledo`) y
+   reemplaza el texto de la reseña y el nombre
 
-⚠️ **No inventes nombres ni textos.** Si alguien compara con la ficha de Google y no
-coinciden, se pierde la credibilidad completa — que es justo lo que esta sección
-busca construir.
+⚠️ **Evita las que nombran a un doctor concreto** si el sitio es solo del Dr. Pedro:
+varias dicen "gracias Doctor Agustín" y quedarían fuera de lugar.
+
+⚠️ **No inventes reseñas ni nombres.** Cualquiera puede compararlas con la ficha.
 
 ### Si cambia la calificación
 
@@ -113,7 +120,7 @@ Actualiza los dos lugares o quedarán en desacuerdo:
 1. El badge visible: busca `5.0 ★ · 55 opiniones en Google`
 2. El JSON-LD: `"ratingValue": "5.0"` y `"reviewCount": "55"`
 
-Google compara este dato con tu ficha real. Si no coinciden, puede quitarte las
+Google compara este dato con la ficha real. Si no coinciden, puede quitarte las
 estrellas de los resultados de búsqueda.
 
 ---
