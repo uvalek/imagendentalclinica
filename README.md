@@ -86,25 +86,35 @@ Los días van en inglés y las horas en formato de 24 horas. Es la única parte 
 
 ## Poner las reseñas de Google (pendiente)
 
-Es lo único que falta. Busca `[Reseña — pendiente]` en `index.html`: hay **3 tarjetas** y **1 badge de calificación**.
+**La calificación ya está puesta y verificada contra la ficha real:** 5.0 de 5 con
+55 opiniones. Aparece en el badge de la sección "Lo que dicen los papás" y en el
+`aggregateRating` del JSON-LD.
 
-En cada tarjeta reemplaza:
+Lo que falta son **los textos de las 3 reseñas**. Google no los muestra a nadie que
+no haya iniciado sesión, así que hay que copiarlos a mano. Se hace en dos minutos:
+
+1. Abre la ficha con tu cuenta: https://www.google.com/maps?cid=17736346071055610791
+2. Entra a "Opiniones" y elige tres
+3. Copia el texto y el nombre de quien la escribió
+
+En `index.html` busca `[Reseña — pendiente]` (hay 3) y reemplaza en cada tarjeta:
+
 - `[Reseña — pendiente]` → el texto de la reseña
 - `[Nombre — pendiente]` → el nombre de quien la escribió
-- `[Calificación de Google — pendiente]` → por ejemplo `4.9 ★ en Google · 87 reseñas`
 
-Y en el JSON-LD, **solo cuando tengas el dato real**, agrega antes de `"address"`:
+⚠️ **No inventes nombres ni textos.** Si alguien compara con la ficha de Google y no
+coinciden, se pierde la credibilidad completa — que es justo lo que esta sección
+busca construir.
 
-```json
-"aggregateRating": {
-  "@type": "AggregateRating",
-  "ratingValue": "4.9",
-  "reviewCount": "87",
-  "bestRating": "5"
-},
-```
+### Si cambia la calificación
 
-⚠️ **Nunca inventes esta calificación.** Google compara el dato con tu ficha real; si no coinciden puede quitarte las estrellas de los resultados de búsqueda. Si no tienes el número, es mejor borrar el bloque completo.
+Actualiza los dos lugares o quedarán en desacuerdo:
+
+1. El badge visible: busca `5.0 ★ · 55 opiniones en Google`
+2. El JSON-LD: `"ratingValue": "5.0"` y `"reviewCount": "55"`
+
+Google compara este dato con tu ficha real. Si no coinciden, puede quitarte las
+estrellas de los resultados de búsqueda.
 
 ---
 
