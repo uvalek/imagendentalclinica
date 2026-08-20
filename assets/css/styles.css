@@ -1,0 +1,75 @@
+/* Imagen Dental Kids — estilos globales
+   Los estilos de cada elemento viven inline en index.html (asi salieron del
+   diseno y asi se quedan). Aqui solo esta lo que no puede ir inline:
+   la tipografia, los efectos :hover y el comportamiento del menu. */
+
+/* ---------- Tipografia Nunito (variable: un archivo cubre 400-800) ---------- */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/nunito-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/nunito-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                 U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                 U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Base (identico al export) ---------- */
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Nunito, system-ui, sans-serif; background: #4A32D4; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+a { color: #FFD426; text-decoration: none; }
+a:hover { color: #ffffff; }
+p { text-wrap: pretty; }
+summary::-webkit-details-marker { display: none; }
+
+/* ---------- Efectos :hover (venian como style-hover en el export) ---------- */
+[data-hv="1"]:hover { background:#FFD426; }
+[data-hv="2"]:hover { background:#FFD426; color:#231057; }
+[data-hv="3"]:hover { background:#ffffff; color:#4A32D4; }
+[data-hv="4"]:hover { background:#F4F1FF; }
+[data-hv="5"]:hover { background:#4A32D4; color:#ffffff; }
+[data-hv="6"]:hover { background:#E9E3FF; }
+[data-hv="7"]:hover { background:#231057; color:#ffffff; }
+[data-hv="8"]:hover { color:#FFD426; }
+[data-hv="9"]:hover { background:#ffffff; color:#231057; }
+
+/* ---------- Navegacion: escritorio vs movil ----------
+   El export cambiaba a los 1080px con JavaScript (matchMedia).
+   Aqui lo hace el CSS, que es mas rapido y no parpadea al cargar. */
+@media (max-width: 1079px) { .nav-escritorio { display: none !important; } }
+@media (min-width: 1080px) { .nav-movil      { display: none !important; } }
+
+.menu-desplegable[hidden] { display: none !important; }
+.faq-panel[hidden]        { display: none !important; }
+
+/* ---------- Anclas: que el menu pegajoso no tape los titulos ---------- */
+.seccion-ancla { scroll-margin-top: 96px; }
+@media (max-width: 1079px) { .seccion-ancla { scroll-margin-top: 160px; } }
+
+/* ---------- Accesibilidad ---------- */
+:focus-visible { outline: 3px solid #FFD426; outline-offset: 3px; border-radius: 4px; }
+
+.saltar-al-contenido {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: #ffffff; color: #4A32D4; font-weight: 800; font-size: 15px;
+  padding: 12px 20px; border-radius: 0 0 14px 0;
+}
+.saltar-al-contenido:focus { left: 0; }
+
+/* Respeta a quien pide menos animacion en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

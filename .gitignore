@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs y temporales
+*.log
+.cache/
+tmp/
+
+# Dependencias (este proyecto no usa npm, pero por si acaso)
+node_modules/
+
+# Vercel
+.vercel
