@@ -226,9 +226,21 @@ La carpeta `_source/` guarda el export original de 5.3 MB por si algún día hay
 
 ## Cosas que conviene saber
 
-**La página pesa unos 230 KB.** Si agregas fotos, conviértelas siempre a WebP con el comando de arriba. Una sola foto de celular sin optimizar pesa más que todo el sitio junto.
+**La página pesa unos 235 KB.** Si agregas fotos, conviértelas siempre a WebP con el comando de arriba. Una sola foto de celular sin optimizar pesa más que todo el sitio junto.
 
 **Los ojos del hero no son una imagen.** Están hechos con código (`div` y CSS), por eso pesan cero y se ven nítidos en cualquier pantalla. Si tocas esa parte del HTML se rompe la cara.
+
+**Los bloques aparecen conforme uno baja.** Es un efecto de entrada (se desvanecen y
+suben un poco) hecho con `IntersectionObserver` en `assets/js/app.js`, sin librerías: son
+unos 2 KB. Las tarjetas blancas también se levantan al pasar el cursor.
+
+Si algún bloque no debe animarse, en `app.js` busca la función `animaciones()`. Y si
+quieres quitar el efecto por completo, borra la línea `document.documentElement.classList.add('js')`
+del `<script>` que está en el `<head>` de `index.html`: la página se ve igual, quieta.
+
+El efecto **nunca esconde contenido**: si el JavaScript fallara, un temporizador de
+seguridad revela todo a los 2,5 segundos, y quien tenga activado "reducir movimiento" en
+su sistema ve la página completa y sin animación.
 
 **El mapa tarda en aparecer a propósito.** Usa `loading="lazy"`: solo carga cuando el visitante llega a esa sección, para que la página abra rápido en celular.
 

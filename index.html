@@ -39,6 +39,18 @@
 <link rel="preload" href="assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 
+<script>
+  /* Activa las animaciones de entrada solo si hay JavaScript. Si por lo que sea
+     app.js no llegara a ejecutarse, a los 2,5 s se quita la clase y la página
+     se ve completa: nunca se queda contenido invisible. */
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!document.documentElement.classList.contains('anim-ok')) {
+      document.documentElement.classList.remove('js');
+    }
+  }, 2500);
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

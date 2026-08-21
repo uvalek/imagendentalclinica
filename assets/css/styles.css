@@ -73,3 +73,37 @@ summary::-webkit-details-marker { display: none; }
   html { scroll-behavior: auto; }
   * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* ---------- Animaciones de entrada ----------
+   La página aparece por bloques conforme uno baja. Todo esto vive detrás de la
+   clase .js: sin JavaScript no se oculta nada y el contenido se ve tal cual.
+   El elemento arranca desplazado y transparente; el observador de app.js le
+   pone .visible cuando entra en pantalla. */
+.anima {
+  transition: opacity .7s cubic-bezier(.22,.61,.36,1) var(--retraso, 0ms),
+              transform .7s cubic-bezier(.22,.61,.36,1) var(--retraso, 0ms);
+}
+.js .anima            { opacity: 0; transform: translateY(22px); }
+.js .anima-suave      { opacity: 0; transform: none; }   /* para lo que ya trae transform propio */
+.js .anima.visible,
+.js .anima-suave.visible { opacity: 1; transform: none; }
+
+/* Transiciones suaves en todo lo que responde al mouse */
+a, button { transition: background-color .25s ease, color .25s ease, transform .25s ease; }
+
+/* Las tarjetas se levantan un poco al pasar el cursor */
+.tarjeta-lift { transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease; }
+@media (hover: hover) {
+  .tarjeta-lift:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(13,11,31,0.16); }
+}
+
+/* El botón flotante de WhatsApp entra solo, un momento después de cargar */
+.js .wa-flotante { opacity: 0; transform: translateY(14px) scale(.92); }
+.wa-flotante { transition: opacity .5s ease .5s, transform .5s cubic-bezier(.34,1.56,.64,1) .5s; }
+.js .wa-flotante.visible { opacity: 1; transform: none; }
+
+/* Quien pide menos movimiento en su sistema ve la página quieta y completa */
+@media (prefers-reduced-motion: reduce) {
+  .js .anima, .js .anima-suave, .js .wa-flotante { opacity: 1 !important; transform: none !important; }
+  .tarjeta-lift:hover { transform: none; }
+}

@@ -89,4 +89,76 @@
       setTimeout(parpadear, 3500 + Math.random() * 5000);
     })();
   }
+
+  /* ---------- 4. Aparición por bloques al bajar ----------
+     Marca los bloques de cada sección y los revela cuando entran en pantalla.
+     Los elementos se eligen desde aquí para no ensuciar el HTML del diseño. */
+  (function animaciones() {
+    var raiz = document.documentElement;
+    raiz.classList.add('anim-ok');          // avisa al fallback del <head> que sí arrancó
+
+    if (!('IntersectionObserver' in window)) { raiz.classList.remove('js'); return; }
+
+    var grupos = [];
+
+    // Cada sección aporta sus bloques. Si un bloque es una rejilla de tarjetas
+    // o una lista, se animan las piezas de dentro para que entren escalonadas.
+    document.querySelectorAll('section > div').forEach(function (contenedor) {
+      Array.prototype.forEach.call(contenedor.children, function (bloque) {
+        var estilo = getComputedStyle(bloque);
+        if (estilo.position === 'absolute') return;      // adornos de fondo: se quedan quietos
+
+        var rejilla = estilo.display === 'grid' && bloque.children.length > 1;
+        var lista = bloque.tagName === 'UL' && bloque.children.length > 1;
+        if (rejilla || lista) {
+          grupos.push(Array.prototype.slice.call(bloque.children));
+        } else {
+          grupos.push([bloque]);
+        }
+      });
+    });
+
+    // La lista de credenciales y los pasos de la primera visita, escalonados
+    document.querySelectorAll('section ul').forEach(function (ul) {
+      if (ul.children.length > 1 && grupos.every(function (g) { return g.indexOf(ul.children[0]) === -1; })) {
+        grupos.push(Array.prototype.slice.call(ul.children));
+      }
+    });
+
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        observador.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    grupos.forEach(function (piezas) {
+      piezas.forEach(function (el, i) {
+        // Si ya trae un transform propio del diseño, solo se desvanece
+        var tieneTransform = getComputedStyle(el).transform !== 'none';
+        el.classList.add(tieneTransform ? 'anima-suave' : 'anima');
+        el.style.setProperty('--retraso', Math.min(i, 6) * 90 + 'ms');
+        observador.observe(el);
+      });
+    });
+
+    // Las tarjetas blancas se levantan al pasar el cursor
+    document.querySelectorAll('section > div > div').forEach(function (rejilla) {
+      if (getComputedStyle(rejilla).display !== 'grid') return;
+      Array.prototype.forEach.call(rejilla.children, function (t) {
+        if (getComputedStyle(t).backgroundColor === 'rgb(255, 255, 255)') t.classList.add('tarjeta-lift');
+      });
+    });
+
+    // El botón flotante de WhatsApp entra solo (es el que va fijo en pantalla)
+    var flotante = Array.prototype.filter.call(
+      document.querySelectorAll('a[href*="wa.me"]'),
+      function (a) { return getComputedStyle(a).position === 'fixed'; }
+    )[0];
+    if (flotante) {
+      flotante.classList.add('wa-flotante');
+      requestAnimationFrame(function () { flotante.classList.add('visible'); });
+    }
+  })();
 })();
