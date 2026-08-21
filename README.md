@@ -126,17 +126,16 @@ Los días van en inglés y las horas en formato de 24 horas. Es la única parte 
 **Ya están puestas y verificadas contra la ficha real.** Calificación 5.0 de 5 con
 55 opiniones, y tres reseñas de padres de familia:
 
-| Quién | De cuándo |
-|---|---|
-| Maricarmen Polledo | hace 8 meses |
-| Cindy Girón | hace 8 meses |
-| Fernando Martínez | hace 8 meses |
+| Quién | De cuándo | Por qué esa |
+|---|---|---|
+| María del Rayo Gil | hace 7 meses | Brackets de su hija, y que le quitó el miedo al dentista |
+| Brenda Matías | hace 8 meses | "El mejor dentista tratando con niños" |
+| Rayito | hace 7 meses | Tres hijos en tratamiento |
 
 Son textuales de Google; solo se corrigieron faltas de ortografía y puntuación, sin
-cambiar ninguna palabra ni el sentido. Se eligieron tres que **no nombran a ningún
-doctor en particular**, porque en la ficha de Google conviven dos: el Dr. Agustín
-Vargas y, según la ficha, también otro doctor. Así sirven sin atribuirle el mérito a
-nadie en concreto.
+cambiar ninguna palabra ni el sentido. Las tres **nombran al Dr. Agustín**, que es lo
+que las hace fuertes: no son elogios genéricos, son pacientes reales que lo mencionan
+por su nombre.
 
 ### Si quieres cambiarlas
 
@@ -145,9 +144,8 @@ nadie en concreto.
 3. En `index.html` busca el nombre actual (por ejemplo `Maricarmen Polledo`) y
    reemplaza el texto de la reseña y el nombre
 
-💡 Ahora que sabemos que el doctor **es** Agustín Vargas, las reseñas que lo nombran
-("gracias Doctor Agustín", "el Dr Agustín es el mejor dentista tratando con niños")
-**sí se pueden usar** y son incluso mejores, porque lo mencionan por su nombre.
+💡 Hay unas diez reseñas más que nombran al Dr. Agustín, por si quieres rotarlas.
+Busca las de Anel Pérez, Isabel Cosme, Majo Balderas o Miguel García.
 
 ⚠️ **No inventes reseñas ni nombres.** Cualquiera puede compararlas con la ficha.
 
