@@ -1,8 +1,45 @@
 # Imagen Dental Kids — landing page
 
-Sitio de una sola página para el consultorio de odontopediatría del **Dr. Pedro Martínez Lucero**, en Tehuacán, Puebla.
+Sitio de una sola página para **Imagen Dental Kids**, consultorio de ortodoncia del
+**Dr. Manuel Agustín Vargas Montoro** en Tehuacán, Puebla. Atiende niños, adolescentes
+y adultos; su especialidad es la ortodoncia.
 
 HTML, CSS y JavaScript puros. **No hay que instalar ni compilar nada.** Se edita con cualquier editor de texto y se sube tal cual.
+
+---
+
+## ⚠️ Pendientes antes de publicar
+
+Tres cosas del sitio siguen sin confirmar. **No publicar con dominio propio hasta
+resolverlas**, porque afirman datos de una persona.
+
+### 1. Las credenciales pueden ser de otro doctor
+
+La sección del doctor muestra:
+
+- Odontopediatra hospitalario — Instituto Nacional de Pediatría – UNAM
+- Certificado por el Consejo Mexicano de Odontología Pediátrica
+- Cédula de Especialidad **15620265**
+- Ortopedia de los maxilares
+
+Esos datos llegaron a nombre del **Dr. Pedro Martínez Lucero**. Si resultan ser suyos y
+no del Dr. Vargas, hay que quitarlos: son credenciales de odontopediatría, y el Dr. Vargas
+es ortodoncista. Atribuirle títulos que no tiene es un problema serio.
+
+**Qué preguntar al consultorio:** ¿la cédula 15620265 es del Dr. Vargas? ¿Cuál es su
+cédula de especialidad en ortodoncia y dónde estudió?
+
+También aparecen en el pie de página y en el JSON-LD.
+
+### 2. La foto es del Dr. Pedro
+
+La foto grande de la sección del doctor es de otra persona. Hay que reemplazarla por una
+del Dr. Vargas (ver "Cambiar una foto" más abajo).
+
+### 3. El mensaje de WhatsApp habla solo de niños
+
+Dice *"quiero agendar una cita para mi hijo"*. Ahora que también se atienden adultos,
+conviene algo como *"quiero agendar una cita"*. Está en 5 enlaces.
 
 ---
 
@@ -98,8 +135,8 @@ Los días van en inglés y las horas en formato de 24 horas. Es la única parte 
 Son textuales de Google; solo se corrigieron faltas de ortografía y puntuación, sin
 cambiar ninguna palabra ni el sentido. Se eligieron tres que **no nombran a ningún
 doctor en particular**, porque en la ficha de Google conviven dos: el Dr. Agustín
-Vargas (ortodoncia) y el Dr. Pedro (odontopediatría). Así sirven aunque cambie quién
-atiende.
+Vargas y, según la ficha, también otro doctor. Así sirven sin atribuirle el mérito a
+nadie en concreto.
 
 ### Si quieres cambiarlas
 
@@ -108,8 +145,9 @@ atiende.
 3. En `index.html` busca el nombre actual (por ejemplo `Maricarmen Polledo`) y
    reemplaza el texto de la reseña y el nombre
 
-⚠️ **Evita las que nombran a un doctor concreto** si el sitio es solo del Dr. Pedro:
-varias dicen "gracias Doctor Agustín" y quedarían fuera de lugar.
+💡 Ahora que sabemos que el doctor **es** Agustín Vargas, las reseñas que lo nombran
+("gracias Doctor Agustín", "el Dr Agustín es el mejor dentista tratando con niños")
+**sí se pueden usar** y son incluso mejores, porque lo mencionan por su nombre.
 
 ⚠️ **No inventes reseñas ni nombres.** Cualquiera puede compararlas con la ficha.
 
@@ -136,9 +174,9 @@ python3 -c "from PIL import Image; im=Image.open('assets/img/NUEVA.jpg'); w=680;
 
 3. En `index.html` actualiza `src`, `srcset`, `width`, `height` y el `alt` de esa imagen.
 
-**Anchos que usa el sitio:** logo 212 y 424 · Dr. Pedro 540 y 941 · foto de la niña 340 y 680.
+**Anchos que usa el sitio:** logo 212 y 424 · foto del doctor 540 y 941 · foto de la niña 340 y 680.
 
-Si la foto está recortada sin fondo (como la del Dr. Pedro), cambia `convert('RGB')` por `convert('RGBA')` o el fondo saldrá negro.
+Si la foto está recortada sin fondo (como la del doctor), cambia `convert('RGB')` por `convert('RGBA')` o el fondo saldrá negro.
 
 ---
 
